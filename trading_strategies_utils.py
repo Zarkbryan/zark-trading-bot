@@ -1,15 +1,4 @@
-import logging
-
-logger = logging.getLogger('zark_trading_bot')
-logger.setLevel(logging.INFO)
-
-handler = logging.StreamHandler()
-formatter = logging.Formatter('[%(levelname)s] %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
-
-def log_info(msg):
-    logger.info(msg)
-
-def log_error(msg):
-    logger.error(msg)
+def calculate_position_size(account_balance, risk_per_trade, stop_loss_pips, pip_value):
+    risk_amount = account_balance * risk_per_trade
+    position_size = risk_amount / (stop_loss_pips * pip_value)
+    return position_size
